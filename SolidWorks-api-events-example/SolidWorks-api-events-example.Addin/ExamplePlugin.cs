@@ -16,7 +16,7 @@ namespace SolidWorks_api_events_example.Addin
 
         public override void DisconnectedFromSolidWorks()
         {
-            
+            ViewModel.ShutDown();
         }
 
         public override string AddInTitle => "Example plugin";
