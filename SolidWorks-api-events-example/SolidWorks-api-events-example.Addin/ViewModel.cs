@@ -17,6 +17,11 @@ namespace SolidWorks_api_events_example.Addin
             SolidWorksEnvironment.Application.ActiveModelInformationChanged += Application_ActiveModelInformationChanged;
         }
 
+        private void ActiveModelOnModelClosing()
+        {
+            MessageBox.Show("Closing");
+        }
+
         public static void ShutDown()
         {
             _instance?.ShutDownInstance();
@@ -29,6 +34,11 @@ namespace SolidWorks_api_events_example.Addin
 
         private void Application_ActiveModelInformationChanged(Model model)
         {
+            if (model != null)
+            {
+                model.ModelClosing += ActiveModelOnModelClosing;
+            }
+
             MessageBox.Show("Active model info changed");
         }
 
